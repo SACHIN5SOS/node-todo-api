@@ -9,6 +9,8 @@
   "author": "Sachin",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "mongodb": "^2.2.5",
     "mongoose": "^4.13.9"
   }
