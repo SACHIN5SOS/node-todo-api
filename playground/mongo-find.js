@@ -7,12 +7,12 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,db)=>{
     }
     console.log('Server connected successfully');
     
-    // db.collection('Todos').find({completed: false}).toArray().then((docs)=>{
-    //     console.log('Todos: ');
-    //     console.log(JSON.stringify(docs,undefined,2));
-    // },(err)=>{
-    //     console.log('Unable to fetch data: ',err);
-    // });
+    db.collection('Todos').find({completed: false}).toArray().then((docs)=>{
+        console.log('Todos: ');
+        console.log(JSON.stringify(docs,undefined,2));
+    },(err)=>{
+        console.log('Unable to fetch data: ',err);
+    });
 
     // db.collection('Todos').find().count().then((count)=>{
     //     console.log(`Todos Count: `, count);
@@ -20,11 +20,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,db)=>{
     //     console.log('Unalbe to fetch data');
     // })
 
-    db.collection('Users').find({name: "Sachin Bhandari"}).toArray().then((docs)=>{
-        console.log('Users: ');
-        console.log(JSON.stringify(docs,undefined,2));
-    },(err)=>{
-        console.log('Unable to fetch information');
-    });
+    // db.collection('Users').find({name: "Sachin Bhandari"}).toArray().then((docs)=>{
+    //     console.log('Users: ');
+    //     console.log(JSON.stringify(docs,undefined,2));
+    // },(err)=>{
+    //     console.log('Unable to fetch information');
+    // });
 
 });
