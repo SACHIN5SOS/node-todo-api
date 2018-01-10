@@ -9,30 +9,19 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,db)=>{
         return console.log('Unable to connect with Mongo Server');
     }
     console.log('Connected to MongoDb Server');
-    /* 
-    db.collection('Todos').insertOne({
-        test:'Something to do',
-        completed: false
+  
+
+    db.collection('Users').insertOne({
+        name: "Sachin Bhandari",
+        age: 19,
+        location: "Bsf Campus Indore"
     },(err,result)=>{
         if(err){
-            return console.log('Unable to Insert value: ',err);
+            return console.log('Unable to insert value: ', err);
         }
 
         console.log(JSON.stringify(result.ops,undefined,2));
-    }); 
-    */
-
-    // db.collection('Users').insertOne({
-    //     name: "Sachin Bhandari",
-    //     age: 19,
-    //     location: "BSF Campus Indore"
-    // },(err,result)=>{
-    //     if(err){
-    //         return console.log('Unable to insert value: ', err);
-    //     }
-
-    //     console.log(JSON.stringify(result.ops,undefined,2));
-    // });
+    });
 
    db.close(); 
 });
