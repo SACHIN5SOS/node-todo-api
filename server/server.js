@@ -6,6 +6,7 @@ var app= express();
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/Todo');
 var {Users} = require('./models/Users');   //Object destructing
+var {ObjectId} = require('mongodb');
 
 app.use(bodyParser.json());  //middlewarte funtion declaration
 
@@ -32,6 +33,26 @@ app.get('/todo',(req,res)=>{
         res.send(e);
     });
 });
+
+app.get('/todo/:id',(req,res)=>{
+    var id = req.params.id; 
+
+    if(!ObjectId.isValid(id)){
+        return res.status(404).send();
+    }
+
+    Todo.findById(id).then((todo)=>{
+        if(!todo){
+         return   res.status(404).send();
+        }
+            res.status(200).send({todo});
+
+    }).catch((e)=>{
+        res.status(400).send();
+    })
+});
+
+
 app.listen(3000,()=>{
     console.log(`Stating server at 3000`);
 })
