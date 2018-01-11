@@ -23,6 +23,15 @@ app.post('/todo',(req,res)=>{
 
 });
 
+app.get('/todo',(req,res)=>{
+    Todo.find().then((todos)=>{
+        res.send({
+            todos
+        })
+    },(e)=>{
+        res.send(e);
+    });
+});
 app.listen(3000,()=>{
     console.log(`Stating server at 3000`);
 })
