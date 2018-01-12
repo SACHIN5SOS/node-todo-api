@@ -7,7 +7,7 @@ var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/Todo');
 var {Users} = require('./models/Users');   //Object destructing
 var {ObjectId} = require('mongodb');
-const port = process.env.PORT||3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());  //middlewarte funtion declaration
 
