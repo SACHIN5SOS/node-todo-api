@@ -3,5 +3,5 @@ if(process.env.NODE_ENV==='production'){
         'mongodb://<dbuser>:<dbpassword>@ds046357.mlab.com:46357/nodetodoapp'
     }
 }else{
-    module.exports= {mongoURI: 'mongodb://localhost:27017'}
+    module.exports= {mongoURL: 'mongodb://localhost:27017'}
 }
