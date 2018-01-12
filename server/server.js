@@ -7,6 +7,7 @@ var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/Todo');
 var {Users} = require('./models/Users');   //Object destructing
 var {ObjectId} = require('mongodb');
+const port = process.env.PORT||3000;
 
 app.use(bodyParser.json());  //middlewarte funtion declaration
 
@@ -53,8 +54,8 @@ app.get('/todo/:id',(req,res)=>{
 });
 
 
-app.listen(3000,()=>{
-    console.log(`Stating server at 3000`);
+app.listen(port,()=>{
+    console.log(`Stating server at ${port}`);
 })
 
 module.exports = {app};
