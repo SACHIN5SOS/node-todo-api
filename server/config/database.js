@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV==='production'){
     module.exports={mongoURI:
-        'mongodb://<dbuser>:<dbpassword>@ds046357.mlab.com:46357/nodetodoapp'
+        'mongodb://sachin5sos:ilovemyfamily123@ds046357.mlab.com:46357/nodetodoapp'
     }
 }else{
-    module.exports= {mongoURL: 'mongodb://localhost:27017'}
+    module.exports= {mongoURI: 'mongodb://localhost:27017'}
 }
