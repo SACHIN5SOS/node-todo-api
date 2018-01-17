@@ -25,6 +25,8 @@ app.post('/todo',(req,res)=>{
 
 });
 
+
+
 app.get('/todo',(req,res)=>{
     Todo.find().then((todos)=>{
         res.send({
@@ -98,8 +100,22 @@ app.patch('/todo/:id',(req,res)=>{
     })
 });
 
+
+app.post('/user',(req,res)=>{
+    var body= _.pick(req.body,['email','password']);
+    var user = new Users(body);
+    user.save().then((user)=>{
+        res.send(user);
+    }).catch((e)=>{
+        res.status(400).send(e);
+    });
+});
+
 app.listen(port,()=>{
     console.log(`Stating server at ${port}`);
-})
+});
 
 module.exports = {app}; 
+
+
+
