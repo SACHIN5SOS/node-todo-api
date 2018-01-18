@@ -9,7 +9,7 @@ var {Users} = require('./models/Users');   //Object destructing
 var {ObjectId} = require('mongodb');
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());  //middlewarte funtion declaration
+app.use(bodyParser.json());  //middleware funtion declaration
 
 app.post('/todo',(req,res)=>{
     
