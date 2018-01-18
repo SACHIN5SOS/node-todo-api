@@ -104,8 +104,11 @@ app.patch('/todo/:id',(req,res)=>{
 app.post('/user',(req,res)=>{
     var body= _.pick(req.body,['email','password']);
     var user = new Users(body);
-    user.save().then((user)=>{
-        res.send(user);
+    
+    user.save().then(()=>{
+       return user.generateAuthToken();
+    }).then((token)=>{
+        res.header('x-Auth',token).send(user);
     }).catch((e)=>{
         res.status(400).send(e);
     });
