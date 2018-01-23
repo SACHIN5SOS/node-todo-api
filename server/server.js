@@ -6,8 +6,8 @@ var app= express();
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/Todo');
 var {Users} = require('./models/Users');   //Object destructing
-var {ObjectId} = require('mongodb');
-const port = process.env.PORT || 3000;
+var {ObjectId} = require('mongodb');      
+const port = process.env.PORT || 3000;     //For setting environment in Port 3000 or in process env Port specified 
 
 app.use(bodyParser.json());  //middleware funtion declaration
 
