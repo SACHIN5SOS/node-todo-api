@@ -17,7 +17,7 @@ app.post('/todo',(req,res)=>{
         text : req.body.text
     });
     
-    todo.save().then((doc)=>{
+    todo.save().then((doc)=>{   //save  todo
         res.send(doc)
     }, (e)=>{
         res.status(400).send(e);
