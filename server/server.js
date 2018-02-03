@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 const _ = require('lodash');
 var app= express();
+var {authenticate} = require('.//middleware/authenticate');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/Todo');
@@ -108,10 +109,14 @@ app.post('/user',(req,res)=>{
     user.save().then(()=>{
        return user.generateAuthToken();
     }).then((token)=>{
-        res.header('x-Auth',token).send(user);
+        res.header('x-auth',token).send(user);
     }).catch((e)=>{
         res.status(400).send(e);
     });
+});
+
+app.get('/user/me',authenticate,(req,res)=>{
+        res.send(req.user);
 });
 
 app.listen(port,()=>{
