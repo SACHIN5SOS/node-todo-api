@@ -12,10 +12,12 @@ const port = process.env.PORT || 3000;     //For setting environment in Port 300
 
 app.use(bodyParser.json());  //middleware funtion declaration
 
-app.post('/todo',(req,res)=>{
+
+app.post('/todo',authenticate,(req,res)=>{
     
     var todo =new Todo({
-        text : req.body.text
+        text : req.body.text,
+        _creator: req.user._id
     });
     
     todo.save().then((doc)=>{   //save  todo
@@ -28,8 +30,10 @@ app.post('/todo',(req,res)=>{
 
 
 
-app.get('/todo',(req,res)=>{
-    Todo.find().then((todos)=>{
+app.get('/todo',authenticate,(req,res)=>{
+    Todo.find({
+        _creator:req.user._id
+    }).then((todos)=>{
         res.send({
             todos
         })
